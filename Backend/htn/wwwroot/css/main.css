@@ -1,0 +1,87 @@
+﻿body {
+    background: #fbfbfb;
+    transition: 4s;
+}
+
+.container {
+    max-width: 100%;
+}
+
+*:not(code) {
+    font-family: "Raleway", "Ubuntu", "Calibri", "Helvetica", "Arial", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    width: 100%;
+}
+
+code {
+    font-family: "Consolas", monospace;
+}
+
+pre {
+    color: rgba(255, 63, 113, 0.99);
+}
+
+.form-group.is-invalid .invalid-feedback {
+    display: block;
+}
+
+footer {
+    padding-bottom: 1em;
+    padding-top: 2em;
+    /* background: #ededed; */
+    opacity: 60%;
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer .container {
+    text-align: center;
+}
+footer .container div {
+    display: inline-block;
+    margin: auto;
+}
+footer .container div a i {
+    color: #777777;
+    transition: 4s;
+}
+footer .container p a {
+    color: #777777;
+    transition: 4s;
+}
+
+/*# sourceMappingURL=main.css.map */
+
+#mood-input {
+    /* alignment */
+    width: 50%;
+    margin: auto;
+    text-align: center;
+
+    /* options */
+    resize: none;
+
+    /* style */
+    background: transparent;
+    opacity: 75%;
+    border: 0;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#mood-output {
+    text-align: center;
+    width: 100%;
+}
+
+::placeholder, ::-ms-input-placeholder {
+    text-align: center;
+}

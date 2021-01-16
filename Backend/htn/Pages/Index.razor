@@ -1,21 +1,75 @@
 ﻿@page "/"
 
+<div class="text-muted" style="position: absolute; top: 1em; right: 20px">
+    Built by <a href="https://github.com/encodeous">adam</a>, <a href="https://github.com/plasmatic1">moses</a>, <a href="https://github.com/tmaswang03">thomas</a>, and <a href="https://github.com/SunRub">ruby</a>!
+</div>
 
-<h1>Hello, world!</h1>
+<div class="text-muted" style="position: absolute; top: 1em; left: 20px">
+    <a href="https://hackthenorth.com/" style="text-decoration: none">hack the north - 2021</a>
+</div>
 
-<input type="text" aria-multiline="true" @oninput="Update">
-@Output
+<div class="container">
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+    <div class="row mt-6"><p></p></div>
+        
+    <div class="row">
+        <h1>@Title</h1>
+    </div>
+    <div class="row">
+        <!-- <textarea rows="1" class="md-textarea form-control" id="mood-input" placeholder="mood :>"></textarea> -->
+        <input class="form-control" id="mood-input" placeholder="type here, and we will detect your mood :]" @oninput="InputChanged">
+    </div>
+    <div class="row mt-2" id="mood-div">
+        <p id="mood-output"></p>
+    </div>
+</div>
+
+<footer class="text-muted mt-4" id="footer">
+    <div class="container">
+        <div>
+            <a href="https://github.com/htnmart/Emotion.Net" class="mr-3"><i class="fab fa-github fa-3x"></i></a>
+            <p>Check it out on GitHub!</p>
+        </div>
+    </div>
+</footer>
 
 @code{
-
-    public string Output = "";
+    public string Title;
+    
     [Inject]
-    public CompositeAnalyzer Text { get; set; }
+    public CompositeAnalyzer Analyzer { get; set; }
+    
+    [Inject]
+    public IJSRuntime Runtime { get; set; }
 
-    private void Update(ChangeEventArgs obj)
+    private void InputChanged(ChangeEventArgs obj)
     {
-        Output = Text.AnalyzeComposite((string) obj.Value) + "";
-        StateHasChanged();
+        Runtime.InvokeVoidAsync("update", Analyzer.AnalyzeComposite((string)obj.Value));
+    }
+
+    protected override void OnInitialized()
+    {
+        var possible = new []{"How are you feeling?", "Tell us about your day!", "How's it going?", "Write random words!"};
+        var idx = new Random().Next(0, possible.Length);
+        Title = possible[idx];
     }
 
 }

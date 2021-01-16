@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,16 +17,32 @@ namespace htn.ML
         public PyBridge()
         {
             Bridge = new Process();
-            Bridge.StartInfo = new ProcessStartInfo()
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                FileName = "python3",
-                Arguments = @"/root/Site/ML/ML.py",
-                RedirectStandardInput = true,
-                RedirectStandardError = true,
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                WorkingDirectory = Environment.CurrentDirectory
-            };
+                Bridge.StartInfo = new ProcessStartInfo()
+                {
+                    FileName = "python",
+                    Arguments = Path.Join(Environment.CurrentDirectory, @"ML/ML.py"),
+                    RedirectStandardInput = true,
+                    RedirectStandardError = true,
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    WorkingDirectory = Environment.CurrentDirectory
+                };
+            }
+            else
+            {
+                Bridge.StartInfo = new ProcessStartInfo()
+                {
+                    FileName = "python3",
+                    Arguments = Path.Join(Environment.CurrentDirectory, @"ML/ML.py"),
+                    RedirectStandardInput = true,
+                    RedirectStandardError = true,
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    WorkingDirectory = Environment.CurrentDirectory
+                };
+            }
             Bridge.Start();
             Bridge.StandardInput.AutoFlush = true;
             Task.Run(async () =>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using htn.ML;
 using Microsoft.AspNetCore.Hosting;
@@ -14,6 +15,7 @@ namespace htn
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine(Assembly.GetCallingAssembly().FullName);
             CreateHostBuilder(args).Build().Run();
         }
 

@@ -35,7 +35,6 @@ namespace htn.Shared
                 azureScore = Azure.GetSentiment(sb.ToString());
                 cnt++;
             }
-
             float localScore = Local.GetScore(sb.ToString());
             return (azureScore + localScore) / cnt;
         }
