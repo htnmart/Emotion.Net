@@ -12,6 +12,10 @@
       <None Update="Secret.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <Content Remove="reddit_jokes.json" />
+      <None Update="reddit-cleanjokes.csv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="Azure.AI.TextAnalytics" Version="5.0.0" />

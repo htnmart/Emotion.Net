@@ -33,7 +33,6 @@ footer {
     padding-top: 2em;
     /* background: #ededed; */
     opacity: 60%;
-
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -78,6 +77,10 @@ footer .container p a {
 }
 
 #mood-output {
+    text-align: center;
+    width: 100%;
+}
+#mood-joke {
     text-align: center;
     width: 100%;
 }

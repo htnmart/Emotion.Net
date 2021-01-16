@@ -34,6 +34,7 @@ namespace htn
             services.AddSingleton<PyBridge>();
             services.AddSingleton<TextAnalyzer>();
             services.AddSingleton<CompositeAnalyzer>();
+            services.AddSingleton<JokeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

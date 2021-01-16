@@ -1,4 +1,7 @@
 ﻿@page "/"
+@using htn.ML
+@using System.Threading
+@using htn.Azure
 
 <div class="text-muted" style="position: absolute; top: 1em; right: 20px">
     Built by <a href="https://github.com/encodeous">adam</a>, <a href="https://github.com/plasmatic1">moses</a>, <a href="https://github.com/tmaswang03">thomas</a>, and <a href="https://github.com/SunRub">ruby</a>!
@@ -39,6 +42,7 @@
     </div>
     <div class="row mt-2" id="mood-div">
         <p id="mood-output"></p>
+        <p id="mood-joke"></p>
     </div>
 </div>
 
@@ -53,16 +57,38 @@
 
 @code{
     public string Title;
-    
+
     [Inject]
     public CompositeAnalyzer Analyzer { get; set; }
+    [Inject]
+    public PyBridge PyAnalyzer { get; set; }
+    [Inject]
+    public JokeService Service { get; set; }
     
     [Inject]
     public IJSRuntime Runtime { get; set; }
 
+    public CancellationTokenSource cts = null;
+
     private void InputChanged(ChangeEventArgs obj)
     {
-        Runtime.InvokeVoidAsync("update", Analyzer.AnalyzeComposite((string)obj.Value));
+        if (cts != null)
+        {
+            cts.Cancel();
+        }
+        string joke = Service.GetRandomJoke();
+        cts = new CancellationTokenSource();
+        Runtime.InvokeVoidAsync("update", PyAnalyzer.GetScore((string)obj.Value), joke);
+        Task.Run(async () =>
+        {
+            var ct = cts.Token;
+            await Task.Delay(3000, ct);
+            if (!ct.IsCancellationRequested)
+            {
+                await Runtime.InvokeVoidAsync("update", Analyzer.AnalyzeComposite((string)obj.Value), joke);
+            }
+            cts = null;
+        });
     }
 
     protected override void OnInitialized()
