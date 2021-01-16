@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,13 +18,13 @@ namespace htn.ML
             Bridge = new Process();
             Bridge.StartInfo = new ProcessStartInfo()
             {
-                FileName = "python",
-                Arguments = @"F:\encodeous\htn\Backend\htn\ML\ML.py",
+                FileName = "python3",
+                Arguments = @"/root/Site/ML/ML.py",
                 RedirectStandardInput = true,
                 RedirectStandardError = true,
                 RedirectStandardOutput = true,
-                CreateNoWindow = true,
-                UseShellExecute = false
+                UseShellExecute = false,
+                WorkingDirectory = Environment.CurrentDirectory
             };
             Bridge.Start();
             Bridge.StandardInput.AutoFlush = true;

@@ -2,6 +2,7 @@
 from nltk import tokenize
 import nltk
 import sys
+nltk.download('vader_lexicon')
 nltk.download('punkt')
 for ln in sys.stdin:
     tokens = tokenize.sent_tokenize(ln.rstrip('\n'))
