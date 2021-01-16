@@ -1,0 +1,22 @@
+﻿@page "/"
+@using htn.ML
+
+
+<h1>Hello, world!</h1>
+
+<input type="text" aria-multiline="true" @oninput="Update">
+@Output
+
+@code{
+
+    public string Output = "";
+    [Inject]
+    public PyBridge Bridge { get; set; }
+
+    private void Update(ChangeEventArgs obj)
+    {
+        Output = Bridge.GetScore((string) obj.Value) + "";
+        StateHasChanged();
+    }
+
+}
