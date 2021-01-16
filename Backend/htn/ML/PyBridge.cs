@@ -48,19 +48,10 @@ namespace htn.ML
 
         public float GetScore(string input)
         {
-            if (string.IsNullOrEmpty(input)) return 0;
-            StringBuilder sb = new StringBuilder();
-            foreach (var c in input)
-            {
-                if (char.IsLetter(c) || char.IsDigit(c) || char.IsPunctuation(c) || char.IsSeparator(c))
-                {
-                    sb.Append(c);
-                }
-            }
             try
             {
                 BridgeSemaphore.Wait();
-                Bridge.StandardInput.WriteLine(sb);
+                Bridge.StandardInput.WriteLine(input);
                 StateSemaphore.Wait();
                 return float.Parse(StateData);
             }
