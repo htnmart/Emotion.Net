@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using htn.Azure;
 using htn.ML;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -29,6 +30,7 @@ namespace htn
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<PyBridge>();
+            services.AddSingleton<TextAnalyzer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

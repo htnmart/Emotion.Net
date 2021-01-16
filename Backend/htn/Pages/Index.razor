@@ -1,21 +1,27 @@
 ﻿@page "/"
 @using htn.ML
+@using htn.Azure
 
 
 <h1>Hello, world!</h1>
 
-<input type="text" aria-multiline="true" @oninput="Update">
+<input type="text" aria-multiline="true" @onchange="Update">
 @Output
+@Output2
 
 @code{
 
     public string Output = "";
+    public string Output2 = "";
     [Inject]
     public PyBridge Bridge { get; set; }
+    [Inject]
+    public TextAnalyzer Text { get; set; }
 
     private void Update(ChangeEventArgs obj)
     {
         Output = Bridge.GetScore((string) obj.Value) + "";
+        Output2 = Text.GetSentiment((string) obj.Value) + "";
         StateHasChanged();
     }
 

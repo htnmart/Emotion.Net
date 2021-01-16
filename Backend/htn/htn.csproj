@@ -8,4 +8,12 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
+    <ItemGroup>
+      <None Update="Secret.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Azure.AI.TextAnalytics" Version="5.0.0" />
+    </ItemGroup>
 </Project>
