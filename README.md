@@ -4,7 +4,7 @@
 
 ### Inspiration
 
-People matter. Emotions matter. The COVID-19 pandemic has put people's mental health at-risk. Research has shown that the pandemic has nearly tripled the rate of depression. We created EmotionNet to be able to assess the feelings of individuals during hard times.
+People matter. Emotions matter. The COVID-19 pandemic has put people's mental health at risk. Research has shown that the pandemic has nearly tripled the rate of depression. We created EmotionNet to be able to assess the feelings of individuals during hard times.
 
 ### Features
 
@@ -12,11 +12,11 @@ EmotionNet asks users to type sentences and words that describe their day, or cu
 
 ### How we built it
 
-The front-end of EmotionNet was written with pure JavaScript/HTML along with ASP.NET/Blazor for both the front and back-end. The site uses a combination of NLTK - Vader sentiment analysis and Azure Cognitive Toolkit. The reason for this is explained in the “Challenges” section.
+The front-end of EmotionNet was written with JavaScript/HTML along with ASP.NET/Blazor for both the front and back-end. The site uses a combination of NLTK - Vader sentiment analysis and Azure Cognitive Toolkit. The reason for this is explained in the “Challenges” section.
 
 ### Challenges we faced
 
-**While making EmotionNet, we encountered numerous challenges. Here is an unordered list of some obstacles:**
+**While making EmotionNet, we encountered numerous challenges. Here is an unordered list of some obstacles we met:**
 
 - Since this is the first time the team attended a hackathon, we were not accustomed to the limited time we had!
 - EmotionNet was built with a large range of languages, including but not limited to: C#, JavaScript, Razor, HTML, Python and CSS. Coordinating these languages together was a challenging task.
