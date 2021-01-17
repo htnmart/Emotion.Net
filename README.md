@@ -1,6 +1,6 @@
 ## Emotion.Net - Computers have feelings too!
 
-**Visit our live demo [here!](https://emot.ga/ "Click to view demo")
+**Visit our live demo [here!](https://emot.ga/ "Click to view demo")**
 
 ### Inspiration
 
