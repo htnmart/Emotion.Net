@@ -61,34 +61,14 @@
     [Inject]
     public CompositeAnalyzer Analyzer { get; set; }
     [Inject]
-    public PyBridge PyAnalyzer { get; set; }
-    [Inject]
     public JokeService Service { get; set; }
-    
     [Inject]
     public IJSRuntime Runtime { get; set; }
 
-    public CancellationTokenSource cts = null;
-
     private void InputChanged(ChangeEventArgs obj)
     {
-        if (cts != null)
-        {
-            cts.Cancel();
-        }
         string joke = Service.GetRandomJoke();
-        cts = new CancellationTokenSource();
-        Runtime.InvokeVoidAsync("update", PyAnalyzer.GetScore((string)obj.Value), joke);
-        Task.Run(async () =>
-        {
-            var ct = cts.Token;
-            await Task.Delay(3000, ct);
-            if (!ct.IsCancellationRequested)
-            {
-                await Runtime.InvokeVoidAsync("update", Analyzer.AnalyzeComposite((string)obj.Value), joke);
-            }
-            cts = null;
-        });
+        Runtime.InvokeVoidAsync("update", Analyzer.AnalyzeComposite((string) obj.Value), joke);
     }
 
     protected override void OnInitialized()
