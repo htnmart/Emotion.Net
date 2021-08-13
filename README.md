@@ -8,7 +8,7 @@ People matter. Emotions matter. The COVID-19 pandemic has put people's mental he
 
 ### Features
 
-EmotionNet asks users to type sentences and words that describe their day, or current state of mind— and based on this description, it scores the user’s positivity level on a scale of `-100%` (being the most negative) to `100%` (being the most positive). The interface updates in real-time, providing a responsive experience. Based on that, EmotionNet can give the user a joke to cheer them up if they are extremely negative.
+EmotionNet asks users to type sentences and words which describe their day or current state of mind. Based on this description, it scores the user’s positivity level on a scale of `-100%` (being the most negative) to `100%` (being the most positive). The interface updates in real-time, providing a responsive experience. Based on that, EmotionNet can give the user a joke to cheer them up if they are extremely negative.
 
 ### How we built it
 
@@ -19,13 +19,13 @@ The front-end of EmotionNet was written with JavaScript/HTML along with ASP.NET/
 **While making EmotionNet, we encountered numerous challenges. Here is an unordered list of some obstacles we met:**
 
 - Since this is the first time the team attended a hackathon, we were not accustomed to the limited time we had!
-- EmotionNet was built with a large range of languages, including but not limited to: C#, JavaScript, Razor, HTML, Python and CSS. Coordinating these languages together was a challenging task.
-- The Azure Cognitive Service had a strict 5000 requests per month limit, but since we wanted to update in real-time, we had to improvise. Our team came up with a compound text analyzer that combined a local instance of NLTK that offered real-time performance, with the cloud to offer the most accurate predictions.
-- We had limited knowledge in web-development, and had issues properly aligning items when the page got complex.
+- EmotionNet was built with a large range of languages, including, but not limited to: C#, JavaScript, Razor, HTML, Python and CSS. Coordinating these languages together was a challenging task.
+- The Azure Cognitive Service had a strict 5000 requests per month limit, but since we wanted to update in real-time, we had to improvise. Our team came up with a compound text analyzer that combined a local instance of NLTK which offered real-time performance, with the cloud to offer the most accurate predictions.
+- We had limited knowledge in web-development, and had issues properly aligning items when the page became complex.
 
 ### What we learned
 
-Building EmotionNet was an excellent team-building experience. Through the limited time we had, we not only learned more about developing websites and services, but more importantly we learned more about each other!
+Building EmotionNet was an excellent team-building experience. Through the limited time we had, we not only learned more about developing websites and services, but more importantly, we learned more about each other!
 
 ### Opportunities for expansion
 
